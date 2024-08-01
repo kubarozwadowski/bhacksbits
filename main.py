@@ -1,16 +1,16 @@
 class Domino:
     def __init__(self, left: str, operation: str, right: str):
-        self.left = left  # 4-bit number as a string
-        self.operation = operation  # 'AND' or 'OR'
-        self.right = right  # 4-bit number as a string
+        self.left = left  
+        self.operation = operation  
+        self.right = right 
 
     def flip(self):
-        """Flip the domino, swapping the operation and left/right numbers."""
+        #Swaps left and right numbers, inverts operation
         self.operation = 'OR' if self.operation == 'AND' else 'AND'
         self.left, self.right = self.right, self.left
 
     def evaluate(self):
-        """Evaluate the result of the operation between left and right."""
+        #Evaluates value of domnio
         left_int = int(self.left, 2)
         right_int = int(self.right, 2)
         if self.operation == 'AND':
@@ -23,12 +23,11 @@ class Domino:
 
 class BinaryGame:
     def __init__(self, dominos, separating_operations, desired_output):
-        self.dominos = dominos  # List of three Domino objects
-        self.separating_operations = separating_operations  # List of two operations ('AND' or 'OR')
-        self.desired_output = desired_output  # Desired 4-bit output as string
+        self.dominos = dominos  
+        self.separating_operations = separating_operations  
+        self.desired_output = desired_output  
 
     def flip_domino(self, index):
-        """Flip the domino at the specified index."""
         if 0 <= index < len(self.dominos):
             self.dominos[index].flip()
         else:
